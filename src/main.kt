@@ -2,7 +2,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 fun main(){
-    println("Hola mundo - Maldigo mi existencia")
+    println("Hola mundo")
 
     // Java Int edad = 12;
     var edadProfesor = 31
@@ -44,7 +44,7 @@ fun main(){
     val sueldoMayorAEstablecido:Int = if(sueldo > 12.2) 500 else 0
     //condicion ? bloque-true : bloque-false
 
-    imprimirNombre("Ismael")
+    imprimirNombre("Carlos")
 
     calcularSueldo(1000.00)
 
