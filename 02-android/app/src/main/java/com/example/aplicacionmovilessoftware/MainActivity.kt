@@ -10,17 +10,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        BBaseDeDatos.inicializarArreglo()
+
         val botonCicloVida = findViewById<Button>(R.id.btn_ir_ciclo_vida)
         botonCicloVida
                 .setOnClickListener {
-                    irCicloVida()
+                    irAActividad(ACicloVida::class.java)
                 }
+
+        val botonListView = findViewById<Button>(R.id.btn_ir_list_view)
+        botonListView
+            .setOnClickListener {
+                irAActividad(BListView::class.java)
+            }
     }
 
-    fun irCicloVida() {
+    fun irAActividad(clase: Class<*>) {
         val intentExplicito = Intent(
                 this,
-                ACicloVida::class.java
+                clase
         )
         startActivity(intentExplicito)
     }
