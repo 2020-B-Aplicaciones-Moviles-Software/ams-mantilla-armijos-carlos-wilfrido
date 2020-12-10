@@ -1,10 +1,13 @@
 package com.example.aplicacionmovilessoftware
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import androidx.appcompat.app.AlertDialog
 import java.util.ArrayList
 
 class BListView : AppCompatActivity() {
@@ -24,11 +27,60 @@ class BListView : AppCompatActivity() {
 
         listView.adapter = adaptador
 
+        listView
+                .setOnItemLongClickListener { parent, view, position, id ->
+                    val builder = AlertDialog.Builder(this)
+
+                    builder.setTitle("Título")
+
+
+                    val opciones = resources.getStringArray(
+                            R.array.string_array_opciones_dialogo
+                    )
+
+                    val seleccionPrevia = booleanArrayOf(
+                            true,
+                            false,
+                            false
+                    )
+
+                    builder.setMultiChoiceItems(
+                            opciones,
+                            seleccionPrevia,
+                            DialogInterface.OnMultiChoiceClickListener(){
+                                dialog, which, isChecked ->
+                                Log.i("intent-explicito","Dio click en el item")
+                            }
+                    )
+
+                    builder.setPositiveButton(
+                            "Aceptar",
+                            DialogInterface.OnClickListener{ dialog, which ->
+                                Log.i("intent-explicito", "Hola =) ")
+
+                            }
+
+                    )
+                    builder.setNegativeButton(
+                            "Cancelar",
+                            null
+                    )
+
+                    val dialogo = builder.create()
+                    dialogo.show()
+
+                    return@setOnItemLongClickListener true
+                }
+
+
         val botonListView = findViewById<Button>(R.id.btn_list_view)
         botonListView
             .setOnClickListener {
                 anadirItem(adaptador)
             }
+
+
+
     }
 
     fun anadirItem(
