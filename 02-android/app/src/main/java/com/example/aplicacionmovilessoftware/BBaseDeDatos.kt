@@ -14,10 +14,10 @@ class BBaseDeDatos {
 //        }
 
         fun inicializarArreglo(){
-            arregloEntrenadores.add(BEntrenador("Pepe Pérez","Fútbol"))
-            arregloEntrenadores.add(BEntrenador("Juan Ocaña", "Bascket"))
-            arregloEntrenadores.add(BEntrenador("Pedro Montalvo","Voley"))
-            arregloEntrenadores.add(BEntrenador("Mario Cantinflas","Indor"))
+            arregloEntrenadores.add(BEntrenador("Pepe Pérez","Fútbol",liga = null))
+            arregloEntrenadores.add(BEntrenador("Juan Ocaña", "Bascket",liga = null))
+            arregloEntrenadores.add(BEntrenador("Pedro Montalvo","Voley",liga = null))
+            arregloEntrenadores.add(BEntrenador("Mario Cantinflas","Indor",liga = null))
         }
 
         fun anadirItemAlArreglo(item: BEntrenador){

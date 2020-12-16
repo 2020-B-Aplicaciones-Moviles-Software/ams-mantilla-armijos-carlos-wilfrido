@@ -28,12 +28,30 @@ class MainActivity : AppCompatActivity() {
         val botonIrCIntentExplicitoParametros = findViewById<Button>(R.id.btn_ir_intent_explicito_parametros)
         botonIrCIntentExplicitoParametros
             .setOnClickListener {
-                val parametros = arrayListOf<Pair<String,*>>(
+                val intentExplicito = Intent(
+                        this,
+                        CIntentExplicitoParametros::class.java
+                )
+                intentExplicito.putExtra("nombre", "Carlos")
+                intentExplicito.putExtra("apellido", "Mantilla")
+                intentExplicito.putExtra("edad", 28)
+
+                val ligaPokemon = DLiga("Liga Kanto", "Kanto")
+                val ash = BEntrenador("Ash", "Pueblo Paleta", ligaPokemon)
+
+                intentExplicito.putExtra("entrenador", ash)
+
+                startActivityForResult(intentExplicito, 102)
+
+
+
+/*                val parametros = arrayListOf<Pair<String,*>>(
                     Pair("nombre","Carlos"),
                     Pair("apellido","Mantilla"),
                     Pair("edad", 28)
                 )
                 irAActividad(CIntentExplicitoParametros::class.java, parametros)
+*/
             }
     }
 
