@@ -51,4 +51,15 @@
         app:layout_constraintStart_toStartOf="@+id/btn_ir_list_view"
         app:layout_constraintTop_toBottomOf="@+id/btn_ir_list_view" />
 
+    <Button
+        android:id="@+id/btn_ir_intent_con_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="I. Respuesta"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_explicito_parametros"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_explicito_parametros"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_intent_explicito_parametros" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
