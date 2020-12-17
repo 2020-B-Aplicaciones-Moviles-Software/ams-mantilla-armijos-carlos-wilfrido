@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +55,44 @@ class MainActivity : AppCompatActivity() {
                 irAActividad(CIntentExplicitoParametros::class.java, parametros)
 */
             }
-    }
+        EBaseDeDatos.TablaUsuario = ESqliteHelperUsuario(this)
+        if (EBaseDeDatos.TablaUsuario != null){
+            val usuarioEncontrado = EBaseDeDatos.TablaUsuario?.consultarUsuarioPorId(1)
+
+            Log.i(
+                    "bdd","ID: ${usuarioEncontrado?.id} Nombre: ${usuarioEncontrado?.nombre} " +
+                    "Descripcion: ${usuarioEncontrado?.descripcion}"
+            )
+
+            if (usuarioEncontrado?.id == 0){
+                val resultadoCrear = EBaseDeDatos.TablaUsuario
+                ?.crearUsuarioFormulario("Carlos","Estudiante")
+                if (resultadoCrear != null){
+                    Log.i("bdd", "Se creo correctamente")
+            }else{
+                    Log.i("bdd", "Hubo errores")
+                }
+
+            }else{
+                val resultadoActualizar = EBaseDeDatos.TablaUsuario
+                        ?.actualizarUsuarioFormulario(
+                                "Vicente",
+                                Date().time.toString(),
+                                1
+                        )
+                if (resultadoActualizar != null){
+                    if (resultadoActualizar){
+                        Log.i("bdd", "Se actualizó")
+                    }else{
+                        Log.i("bdd", "Errores")
+                    }
+                }
+            }
+        }
+
+
+    }  // fin onCreate
+
 
     fun irAActividad(
         clase: Class<*>,
