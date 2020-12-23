@@ -101,6 +101,15 @@ class MainActivity : AppCompatActivity() {
                 )
             }
 
+        val botonIrRecyclerView = findViewById<Button>(
+            R.id.btn_ir_recycler_view
+        )
+        botonIrRecyclerView
+            .setOnClickListener {
+                irAActividad(
+                    GRecyclerView::class.java
+                )
+            }
     }  // fin onCreate
 
 
