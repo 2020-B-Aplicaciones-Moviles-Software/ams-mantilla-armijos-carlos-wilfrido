@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CEVideojuego">
+
+    <EditText
+        android:id="@+id/et_nombreVideojuego"
+        android:layout_width="343dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="Nombre del Videojuego"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.238" />
+
+    <EditText
+        android:id="@+id/et_fechaPublicaciónVideojuego"
+        android:layout_width="248dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Fec. Publicación(dd-MM-yyyy)"
+        android:inputType="date"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/et_precioVideojuego"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/et_precioVideojuego"
+        app:layout_constraintTop_toBottomOf="@+id/et_precioVideojuego" />
+
+    <Switch
+        android:id="@+id/sw_enDesarrollo"
+        android:layout_width="136dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="32dp"
+        android:checked="false"
+        android:showText="false"
+        android:text="En Desarrollo"
+        app:layout_constraintEnd_toEndOf="@+id/et_fechaPublicaciónVideojuego"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="@+id/et_fechaPublicaciónVideojuego"
+        app:layout_constraintTop_toBottomOf="@+id/et_fechaPublicaciónVideojuego"
+        tools:checked="true" />
+
+    <EditText
+        android:id="@+id/et_precioVideojuego"
+        android:layout_width="218dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Precio del Videojuego"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/et_nombreVideojuego"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/et_nombreVideojuego"
+        app:layout_constraintTop_toBottomOf="@+id/et_nombreVideojuego" />
+
+    <Button
+        android:id="@+id/btn_guardarVideojuego"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="384dp"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="@+id/et_nombreVideojuego"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/et_nombreVideojuego"
+        app:layout_constraintTop_toBottomOf="@+id/et_nombreVideojuego" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="VIDEOJUEGO"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Ingrese la información"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
