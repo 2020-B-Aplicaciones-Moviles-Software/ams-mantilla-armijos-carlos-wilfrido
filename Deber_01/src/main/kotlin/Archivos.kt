@@ -25,7 +25,7 @@ class Archivos {
 
         fun escribirProductora(productora: Productora){
             outString = productora.archivo()+"\n"
-            Files.write(fileProd.toPath(), outString.toByteArray(), StandardOpenOption.TRUNCATE_EXISTING)
+            Files.write(fileProd.toPath(), outString.toByteArray(), StandardOpenOption.APPEND)
             outString=""
         }
         fun escribirProductoraLista(productoras: MutableList<Productora>){
