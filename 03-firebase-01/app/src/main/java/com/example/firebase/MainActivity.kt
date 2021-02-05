@@ -9,9 +9,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.firebase.dto.FirestoreUsuarioDto
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     val CODIGO_INGRESO = 102
@@ -48,6 +51,7 @@ class MainActivity : AppCompatActivity() {
                 .setOnClickListener {
                     irActividad(BFirestore::class.java)
                 }
+
     }
     fun pedidoIngresar(){
 
@@ -94,6 +98,26 @@ class MainActivity : AppCompatActivity() {
                     val usuario = IdpResponse.fromResultIntent(data)
                     if(usuario?.isNewUser == true){
                         //Lógica para crear el usuario en nuestra colección
+                        if(usuario.email != null){
+                            val rolesUsuario = arrayListOf("usuario")
+                            val nuevoUsuario = hashMapOf<String, Any>(
+                                    "roles" to rolesUsuario
+                            )
+                            val db = Firebase.firestore
+                            val referencia = db.collection("usuario")
+                                    .document(usuario!!.email.toString())
+                                    //.document()  usuario autogenerado
+                            referencia
+                                    .set(nuevoUsuario)
+                                    .addOnSuccessListener {
+                                        setearUsuarioFirebase()
+                                        mostrarBotonesOcultos()
+                                        Log.i("firebase-firestore","se creo")
+                                    }
+                                    .addOnFailureListener {
+                                        Log.i("firebase-firestore","Fallo")
+                                    }
+                        }
                     }
                     val texto = findViewById<TextView>(R.id.textView)
                     texto.text = "Bienvenido ${usuario?.email}"
@@ -114,9 +138,11 @@ class MainActivity : AppCompatActivity() {
             if(usuarioLocal.email != null){
                 val usuarioFirebase = BUsuarioFirebase(
                         usuarioLocal.uid,
-                        usuarioLocal.email!!
+                        usuarioLocal.email!!,
+                        null
                 )
                 BAuthUsuario.usuario = usuarioFirebase
+                cargarRolesUsuario(usuarioFirebase.email)
             }
         }
     }
@@ -166,5 +192,33 @@ class MainActivity : AppCompatActivity() {
         } else {
             startActivity(intentExplicito)
         }
+    }
+
+    fun cargarRolesUsuario(uid: String){
+        val db = Firebase.firestore
+
+        val referencia = db.collection("usuario")
+                .document(uid)  //consultar solo uno
+
+        referencia
+                .get()
+                .addOnSuccessListener {
+                    Log.i("firebase-firestore","Datos ${it.data}")
+                    val firestoreUsuario = it.toObject(FirestoreUsuarioDto::class.java)
+                    BAuthUsuario.usuario?.roles = firestoreUsuario?.roles
+                    mostrarRolesEnPantalla()
+                }
+                .addOnFailureListener {
+                    Log.i("firebase-firestore","Fallo cargar usuario")
+                }
+    }
+
+    fun mostrarRolesEnPantalla(){
+        var cadenaTextoRoles = ""
+        BAuthUsuario.usuario?.roles?.forEach {
+            cadenaTextoRoles = cadenaTextoRoles+" "+ it
+        }
+        val textoRoles = findViewById<TextView>(R.id.tv_roles)
+        textoRoles.text = cadenaTextoRoles
     }
 }
