@@ -10,9 +10,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import java.util.*
+import kotlin.collections.ArrayList
 
 class COrdenes : AppCompatActivity() {
 
@@ -56,6 +57,19 @@ class COrdenes : AppCompatActivity() {
         buscarOrdenes()
         //taller()
         //consultaTaller()
+
+        //eliminacion()
+        leer()
+        val etEliminarId = findViewById<EditText>(R.id.et_eliminar_id)
+
+        val botonEliminar = findViewById<Button>(R.id.btn_eliminar)
+        botonEliminar
+                .setOnClickListener {
+                    var delId = etEliminarId.getText().toString()
+                    eliminarDocumentoMedianteConsulta(delId)
+                }
+
+
     }
 
 
@@ -418,5 +432,81 @@ class COrdenes : AppCompatActivity() {
                 .addOnSuccessListener {  }
                 .addOnFailureListener {  }
         }
+    }
+
+    fun eliminacion(){
+        val db = Firebase.firestore
+        val docRef = db
+                .collection("cities")
+                .document("BJ")
+                .collection("landmarks")
+                .document("9V1nMpN797ltUdwdH5Tv")
+
+//        val eliminarCampo = hashMapOf<String, Any>(
+//                "name" to FieldValue.delete()
+//        )
+//        docRef
+//                .update(eliminarCampo)
+//                .addOnSuccessListener {
+//                    Log.i("firebase-delete","${it}")
+//                }
+//                .addOnFailureListener {
+//                    Log.i("firebase-delete","Error eliminando campo ${it}")
+//                }
+
+        docRef
+                .delete()
+                .addOnSuccessListener {
+                    Log.i("firebase-delete","${it}")
+                }
+                .addOnFailureListener {
+                    Log.i("firebase-delete","Error eliminando documento ${it}")
+                }
+    }
+
+    fun leer(){
+        val db = Firebase.firestore
+        val referencia = db.collectionGroup("landmarks")
+        val arregloDocs: ArrayList<DocumentReference>? = null
+        referencia
+                .whereEqualTo("type","museum")
+                .get()
+                .addOnSuccessListener {
+                    for (landmarks in it){
+                        Log.i("firebase-taller","${landmarks.id} ${landmarks.data}")
+                    }
+                }
+                .addOnFailureListener {
+                    Log.i("firebase-firebase","Error ${it}")
+                }
+    }
+
+    fun eliminarDocumentoMedianteConsulta(delId: String) {
+        val db = Firebase.firestore
+        val referencia = db.collectionGroup("landmarks")
+        val arregloDocs = ArrayList<DocumentReference>()
+        referencia
+                .whereEqualTo("type","museum")
+                .get()
+                .addOnSuccessListener {
+                    for (landmarks in it){
+                        arregloDocs.add(landmarks.reference)
+                    }
+                    if (!delId.isEmpty()) {
+                        for (arregloDocs in it) {
+                            if (delId.equals(arregloDocs.id)){
+                                arregloDocs.reference.delete()
+                                Log.i("firebase-taller", "${arregloDocs.id} eliminado")
+                                Toast.makeText(applicationContext, "${arregloDocs.id} eliminado", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }else{
+                        Toast.makeText(applicationContext, "Ingrese un id", Toast.LENGTH_SHORT).show()
+                        Log.i("firebase-taller", "Ingrese un id")
+                    }
+                }
+                .addOnFailureListener {
+                    Log.i("firebase-firebase","Error ${it}")
+                }
     }
 }

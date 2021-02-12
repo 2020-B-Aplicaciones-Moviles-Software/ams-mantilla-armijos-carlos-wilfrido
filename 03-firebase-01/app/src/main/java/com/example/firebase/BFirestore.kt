@@ -29,6 +29,12 @@ class BFirestore : AppCompatActivity() {
                 irActividad(COrdenes::class.java)
             }
 
+        val botonMostrarOrdenes = findViewById<Button>(R.id.btn_mostrar_ordenes)
+        botonMostrarOrdenes
+            .setOnClickListener {
+                irActividad(ListaOrdenes::class.java)
+            }
+
 
     }
     fun irActividad(
