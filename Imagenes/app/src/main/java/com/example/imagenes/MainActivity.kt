@@ -1,21 +1,28 @@
 package com.example.imagenes
 
-import android.R.attr
-import android.app.PendingIntent.getActivity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
 
 
 class MainActivity : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 2
     val SELECT_FILE = 1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +43,20 @@ class MainActivity : AppCompatActivity() {
             .setOnClickListener {
                 intentTomarFoto()
             }
+
+        val botonSubirFirestore = findViewById<Button>(R.id.btn_subir_fs)
+
+        botonSubirFirestore
+                .setOnClickListener {
+                    subirFirestore()
+                }
+
+        val botonDescargar = findViewById<Button>(R.id.btn_descargar)
+
+        botonDescargar
+                .setOnClickListener {
+                    descargar()
+                }
     }
 
     private fun intentTomarFoto() {
@@ -45,6 +66,49 @@ class MainActivity : AppCompatActivity() {
         } catch (e: ActivityNotFoundException) {
             // display error state to the user
         }
+    }
+
+    fun subirFirestore(){
+        val imagen = findViewById<ImageView>(R.id.iv_imagen)
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        val pruebaRef = storageRef.child("Imagenes/test.jpg")
+
+        imagen.isDrawingCacheEnabled = true
+        imagen.buildDrawingCache()
+        val bitmap = (imagen.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100,baos)
+        val data = baos.toByteArray()
+
+        val uploadTask = pruebaRef.putBytes(data)
+        uploadTask
+                .addOnFailureListener{
+                    Log.i("firebase-firestore","Error ${it}")
+                }
+                .addOnSuccessListener {
+                    Log.i("firebase-firestore","Subido ${it}")
+                }
+
+    }
+
+    fun descargar(){
+        val imagen = findViewById<ImageView>(R.id.iv_imagen)
+        val texto = findViewById<EditText>(R.id.et_path)
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        val pruebaRef = storageRef.child("Imagenes/${texto.text}.jpg")
+
+        val ONE_MEGABYTE: Long = 1024 * 1024
+        pruebaRef.getBytes(ONE_MEGABYTE)
+                .addOnFailureListener{
+                    Log.i("firebase-firestore","Error ${it}")
+                }
+                .addOnSuccessListener {
+                    val bmp = BitmapFactory.decodeByteArray(it,0,it.size)
+                    imagen.setImageBitmap(bmp)
+                    Log.i("firebase-firestore","Subido ${it}")
+                }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
