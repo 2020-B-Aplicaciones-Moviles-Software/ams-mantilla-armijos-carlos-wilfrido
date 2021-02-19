@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "161168729710",
+    "project_id": "mobiles-2020b-software-mac",
+    "storage_bucket": "mobiles-2020b-software-mac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161168729710:android:5363f6f6e3875efdaba87f",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161168729710-34mk0rb1c0o7kforetfsgai9n5js6di8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeQ-cJp-lYsrIEFvAG0STjTOvS_1uasVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161168729710-34mk0rb1c0o7kforetfsgai9n5js6di8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161168729710:android:675294ee84ffb721aba87f",
+        "android_client_info": {
+          "package_name": "com.example.firebaseayuda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161168729710-34mk0rb1c0o7kforetfsgai9n5js6di8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeQ-cJp-lYsrIEFvAG0STjTOvS_1uasVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161168729710-34mk0rb1c0o7kforetfsgai9n5js6di8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161168729710:android:a0a45adc9fc95f52aba87f",
+        "android_client_info": {
+          "package_name": "com.example.imagenes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161168729710-34mk0rb1c0o7kforetfsgai9n5js6di8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeQ-cJp-lYsrIEFvAG0STjTOvS_1uasVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161168729710-34mk0rb1c0o7kforetfsgai9n5js6di8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
