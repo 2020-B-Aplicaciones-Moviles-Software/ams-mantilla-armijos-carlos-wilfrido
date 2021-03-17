@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contenedor_categorias"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_productos"
+                android:name="com.example.amazon2.ProductoFragment"
+                style="@style/prodFragments"
+                android:layout_height="wrap_content" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_productos1"
+                android:name="com.example.amazon2.ProductoFragment"
+                style="@style/prodFragments"
+                android:layout_height="wrap_content" />
+
+            <!--            <androidx.fragment.app.FragmentContainerView-->
+            <!--                android:id="@+id/fragment_productos3"-->
+            <!--                android:name="com.example.amazon.ui.productos.ProductosFragment"-->
+            <!--                style="@style/prodFragments"-->
+            <!--                android:layout_height="wrap_content" />-->
+
+            <!--            <androidx.fragment.app.FragmentContainerView-->
+            <!--                android:id="@+id/fragment_productos2"-->
+            <!--                android:name="com.example.amazon.ui.productos.ProductosFragment"-->
+            <!--                style="@style/prodFragments"-->
+            <!--                android:layout_height="wrap_content" />-->
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
