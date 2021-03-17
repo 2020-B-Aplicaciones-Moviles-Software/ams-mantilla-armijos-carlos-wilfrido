@@ -52,6 +52,18 @@ class MainActivity : AppCompatActivity() {
                     irActividad(BFirestore::class.java)
                 }
 
+        val botonMapa = findViewById<Button>(R.id.btn_ir_mapa)
+        botonMapa
+            .setOnClickListener {
+                irActividad(MapsActivity::class.java)
+            }
+
+        val botonFragmento = findViewById<Button>(R.id.btn_ir_fragmento)
+        botonFragmento
+                .setOnClickListener {
+                    irActividad(E_Fragmento::class.java)
+                }
+
     }
     fun pedidoIngresar(){
 

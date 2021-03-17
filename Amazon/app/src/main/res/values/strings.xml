@@ -7,10 +7,15 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Cart</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="action_search">Search</string>
-    <string name="action_notification">Notification</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_pedidos">Tus pedidos</string>
+    <string name="menu_listas">Tus Listas</string>
+    <string name="account">Tu Cuenta</string>
+    <string name="departments">Departamentos</string>
+    <string name="config">Configuración</string>
+    <string name="support">Servicio de atención al cliente</string>
     <string name="hola_usuario">Hola, Usuario</string>
+    <string name="ver_mas">Ver mas</string>
+    <string name="menu_principal">Menú principal</string>
+    <string name="departamentos">Departamentos</string>
 </resources>

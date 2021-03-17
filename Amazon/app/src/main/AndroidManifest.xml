@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Amazon">
+        <activity android:name=".Image_viewer"></activity>/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
