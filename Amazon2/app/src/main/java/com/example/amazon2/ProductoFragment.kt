@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.GridView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.get
 
 // TODO: Rename parameter arguments, choose names that match
@@ -54,7 +55,7 @@ class ProductoFragment : Fragment() {
             ).show()
 
             val intent = Intent(context, Item_viewer::class.java)
-//            intent.putExtra("position", parent.get(position).background.toString())
+            intent.putExtra("POSITION", position)
             context?.startActivity(intent)
         }
     }

@@ -6,15 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-import android.widget.Toast
+import com.example.amazon2.utilities.*
 
 
 class ProductoAdapter internal constructor(private val mContext: Context) : BaseAdapter() {
 
     // References to our images
-    private val mThumbIds = arrayOf(R.drawable.logo1, R.drawable.logo2, R.drawable.logo3,
-            R.drawable.logo4, R.drawable.logo5, R.drawable.logo6,
-            R.drawable.logo7, R.drawable.logo8, R.drawable.logo9)
+    private val mThumbIds = Utils.drawables()
 
     override fun getCount(): Int {
         return mThumbIds.size
@@ -42,7 +40,6 @@ class ProductoAdapter internal constructor(private val mContext: Context) : Base
         }
 
         imageView.setImageResource(mThumbIds[position])
-        imageView.tag = mThumbIds[position].toString()
 
         return imageView
     }
