@@ -1,13 +1,13 @@
-package com.example.proyectomoviles.ui.dashboard
+package com.example.proyectomoviles.ui.categorias
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class CategoriasViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "Fragmento categoría"
     }
     val text: LiveData<String> = _text
 }

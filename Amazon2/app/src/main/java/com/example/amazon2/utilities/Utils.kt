@@ -13,7 +13,7 @@ class Utils {
         }
 
         fun ubicaciones(): Array<LatLng> {
-            val coordenadas = arrayOf(LatLng(-0.176125, -78.480208),LatLng(-0.111729, -78.501830),LatLng(-0.113327, -78.490371),
+                val coordenadas = arrayOf(LatLng(-0.176125, -78.480208),LatLng(-0.111729, -78.501830),LatLng(-0.113327, -78.490371),
                     LatLng(-0.125631, -78.474941),LatLng(-0.145215, -78.463039),LatLng(-0.159792, -78.464992),
                     LatLng(-0.168203, -78.470530),LatLng(-0.169364, -78.484439),LatLng(-0.180666, -78.508487))
             return coordenadas
